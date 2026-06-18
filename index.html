@@ -15,14 +15,11 @@
     margin: 0 auto;
     user-select: none;
   }
-
   .sc-img {
     width: 100%;
     display: block;
     border-radius: 8px;
   }
-
-  /* Overlay oscuro cuando hay zona activa */
   .sc-overlay {
     position: absolute;
     top: 0; left: 0;
@@ -34,7 +31,6 @@
   }
   .sc-overlay.dimmed { background: rgba(0,0,0,0.45); }
 
-  /* Zonas: solo contorno azul */
   .zone {
     position: absolute;
     cursor: pointer;
@@ -46,16 +42,12 @@
   }
   .zone:hover, .zone.active {
     border-color: rgba(46,142,255,1);
-    box-shadow: 0 0 0 1px rgba(46,142,255,0.4),
-                0 0 16px rgba(46,142,255,0.4);
+    box-shadow: 0 0 0 1px rgba(46,142,255,0.4), 0 0 16px rgba(46,142,255,0.4);
   }
-
-  /* Etiqueta sobre cada zona */
   .zone-label {
     position: absolute;
     top: -1px; left: 8px;
-    font-size: 10px;
-    font-weight: 700;
+    font-size: 10px; font-weight: 700;
     color: #2e8eff;
     background: rgba(0,8,24,0.78);
     padding: 2px 8px;
@@ -65,7 +57,6 @@
     white-space: nowrap;
   }
 
-  /* Tooltip */
   .tooltip-box {
     display: none;
     position: absolute;
@@ -79,64 +70,14 @@
     pointer-events: none;
   }
   .tooltip-box.visible { display: block; }
-
-  .tt-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: #111;
-    margin: 0 0 6px;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-  }
-  .tt-badge {
-    font-size: 10px;
-    font-weight: 500;
-    background: rgba(46,142,255,0.1);
-    color: #2e8eff;
-    border-radius: 99px;
-    padding: 2px 7px;
-  }
-  .tt-body {
-    font-size: 12px;
-    line-height: 1.6;
-    color: #555;
-    margin: 0 0 9px;
-  }
-  .tt-divider {
-    border: none;
-    border-top: 1px solid #eee;
-    margin: 8px 0;
-  }
-  .tt-vars {
-    list-style: none;
-    margin: 0 0 9px;
-    padding: 0;
-  }
-  .tt-vars li {
-    font-size: 11px;
-    color: #555;
-    padding: 2px 0;
-    display: flex;
-    gap: 6px;
-  }
-  .tt-vars li code {
-    font-family: monospace;
-    font-size: 10px;
-    color: #2e8eff;
-    background: rgba(46,142,255,0.08);
-    padding: 1px 5px;
-    border-radius: 4px;
-    flex-shrink: 0;
-  }
-  .tt-link {
-    font-size: 11px;
-    font-weight: 600;
-    color: #2e8eff;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(46,142,255,0.35);
-    padding-bottom: 1px;
-  }
+  .tt-title { font-size: 13px; font-weight: 600; color: #111; margin: 0 0 6px; display: flex; align-items: center; gap: 7px; }
+  .tt-badge { font-size: 10px; font-weight: 500; background: rgba(46,142,255,0.1); color: #2e8eff; border-radius: 99px; padding: 2px 7px; }
+  .tt-body { font-size: 12px; line-height: 1.6; color: #555; margin: 0 0 9px; }
+  .tt-divider { border: none; border-top: 1px solid #eee; margin: 8px 0; }
+  .tt-vars { list-style: none; margin: 0 0 9px; padding: 0; }
+  .tt-vars li { font-size: 11px; color: #555; padding: 2px 0; display: flex; gap: 6px; }
+  .tt-vars li code { font-family: monospace; font-size: 10px; color: #2e8eff; background: rgba(46,142,255,0.08); padding: 1px 5px; border-radius: 4px; flex-shrink: 0; }
+  .tt-link { font-size: 11px; font-weight: 600; color: #2e8eff; text-decoration: none; border-bottom: 1px solid rgba(46,142,255,0.35); padding-bottom: 1px; }
   .tt-link:hover { border-color: #2e8eff; }
 </style>
 </head>
@@ -144,42 +85,36 @@
 
 <div class="sc-wrap" id="scwrap">
 
-  <img class="sc-img" id="scimg"
-       src="spring-creator.png"
-       alt="Spring Creator" />
-
+  <img class="sc-img" id="scimg" src="spring-creator.png" alt="Spring Creator" />
   <div class="sc-overlay" id="overlay"></div>
 
-  <!-- ======= ZONA 1: Panel izquierdo ======= -->
+  <!-- ZONA 1: Panel izquierdo - Dimensiones & Material -->
   <div class="zone" id="z-inputs" data-zone="inputs"
-       style="top:6.5%; left:6.5%; width:23.5%; height:50%">
+       style="top:13%; left:6.5%; width:23.5%; height:44%">
     <div class="zone-label">Dimensiones &amp; Material</div>
   </div>
 
-  <!-- ======= ZONA 2: Vista 3D central ======= -->
+  <!-- ZONA 2: Vista 3D central -->
   <div class="zone" id="z-preview" data-zone="preview"
-       style="top:6.5%; left:30.5%; width:30%; height:50%">
+       style="top:13%; left:30.5%; width:30%; height:44%">
     <div class="zone-label">Vista 3D &amp; Operación</div>
   </div>
 
-  <!-- ======= ZONA 3: Panel derecho specs ======= -->
+  <!-- ZONA 3: Panel derecho specs -->
   <div class="zone" id="z-specs" data-zone="specs"
-       style="top:6.5%; left:61%; width:23.5%; height:50%">
+       style="top:13%; left:61%; width:23.5%; height:44%">
     <div class="zone-label">Especificaciones calculadas</div>
   </div>
 
-  <!-- ======= ZONA 4: Pricing ======= -->
+  <!-- ZONA 4: Pricing -->
   <div class="zone" id="z-pricing" data-zone="pricing"
-       style="top:57.5%; left:6.5%; width:78%; height:22%">
+       style="top:58%; left:6.5%; width:78%; height:15%">
     <div class="zone-label">Pricing &amp; Cantidad</div>
   </div>
 
-  <!-- ======= TOOLTIPS ======= -->
-
+  <!-- TOOLTIPS -->
   <div class="tooltip-box" id="tt-inputs">
-    <div class="tt-title">⚙️ Dimensiones &amp; Material
-      <span class="tt-badge">inputs</span>
-    </div>
+    <div class="tt-title">⚙️ Dimensiones &amp; Material <span class="tt-badge">inputs</span></div>
     <p class="tt-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aquí defines la geometría base del resorte antes de calcular.</p>
     <hr class="tt-divider">
     <ul class="tt-vars">
@@ -194,9 +129,7 @@
   </div>
 
   <div class="tooltip-box" id="tt-preview">
-    <div class="tt-title">🧊 Vista 3D &amp; Operation Points
-      <span class="tt-badge">interactivo</span>
-    </div>
+    <div class="tt-title">🧊 Vista 3D &amp; Operation Points <span class="tt-badge">interactivo</span></div>
     <p class="tt-body">Ut enim ad minim veniam. El modelo 3D se actualiza en tiempo real conforme modificas los parámetros.</p>
     <hr class="tt-divider">
     <ul class="tt-vars">
@@ -209,9 +142,7 @@
   </div>
 
   <div class="tooltip-box" id="tt-specs">
-    <div class="tt-title">📊 Especificaciones calculadas
-      <span class="tt-badge">read-only</span>
-    </div>
+    <div class="tt-title">📊 Especificaciones calculadas <span class="tt-badge">read-only</span></div>
     <p class="tt-body">Duis aute irure dolor in reprehenderit. Todos los valores se calculan automáticamente: rigidez, límites seguros y factor Wahl.</p>
     <hr class="tt-divider">
     <ul class="tt-vars">
@@ -225,9 +156,7 @@
   </div>
 
   <div class="tooltip-box" id="tt-pricing">
-    <div class="tt-title">🏷️ Pricing por volumen
-      <span class="tt-badge">precio instantáneo</span>
-    </div>
+    <div class="tt-title">🏷️ Pricing por volumen <span class="tt-badge">precio instantáneo</span></div>
     <p class="tt-body">Excepteur sint occaecat. Precio calculado al instante para cada nivel de cantidad. A mayor volumen, menor costo unitario.</p>
     <hr class="tt-divider">
     <ul class="tt-vars">
@@ -238,14 +167,13 @@
     <a class="tt-link" href="#">Ver artículo: cómo cotizar →</a>
   </div>
 
-</div><!-- /sc-wrap -->
+</div>
 
 <script>
 (function () {
   var wrap    = document.getElementById('scwrap');
   var overlay = document.getElementById('overlay');
   var zones   = document.querySelectorAll('.zone');
-
   var tooltips = {
     inputs:  document.getElementById('tt-inputs'),
     preview: document.getElementById('tt-preview'),
@@ -260,24 +188,19 @@
     var relLeft = zRect.left - wRect.left;
     var key = zone.dataset.zone;
     var ttW = 265;
-    var ttH = 230; // altura aprox tooltip
 
     tt.style.width = ttW + 'px';
 
     if (key === 'inputs') {
-      // A la derecha del panel izquierdo
       tt.style.top  = relTop + 'px';
       tt.style.left = (relLeft + zRect.width + 10) + 'px';
     } else if (key === 'specs') {
-      // A la izquierda del panel derecho
       tt.style.top  = relTop + 'px';
       tt.style.left = (relLeft - ttW - 10) + 'px';
     } else if (key === 'pricing') {
-      // Arriba de la zona de pricing
-      tt.style.top  = (relTop - ttH - 10) + 'px';
+      tt.style.top  = (relTop - 240) + 'px';
       tt.style.left = relLeft + 'px';
     } else {
-      // Preview: debajo del label
       tt.style.top  = (relTop + 30) + 'px';
       tt.style.left = relLeft + 'px';
     }
@@ -288,10 +211,7 @@
       overlay.classList.add('dimmed');
       zone.classList.add('active');
       var tt = tooltips[zone.dataset.zone];
-      if (tt) {
-        positionTooltip(zone, tt);
-        tt.classList.add('visible');
-      }
+      if (tt) { positionTooltip(zone, tt); tt.classList.add('visible'); }
     });
     zone.addEventListener('mouseleave', function () {
       overlay.classList.remove('dimmed');
