@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spring Creator - Guía Interactiva</title>
+<title>Spring Creator - Interactive Guide</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: #f0f0f0; padding: 20px; font-family: sans-serif; }
@@ -71,7 +71,7 @@
   }
   .tooltip-box.visible { display: block; }
   .tt-title { font-size: 13px; font-weight: 600; color: #111; margin: 0 0 6px; display: flex; align-items: center; gap: 7px; }
-  .tt-badge { font-size: 10px; font-weight: 500; background: rgba(46,142,255,0.1); color: #2e8eff; border-radius: 99px; padding: 2px 7px; }
+  .tt-badge { font-size: 10px; font-weight: 500; background: rgba(46,142,255,0.1); color: #2e8eff; border-radius: 99px; padding: 2px 7px; flex-shrink: 0; }
   .tt-body { font-size: 12px; line-height: 1.6; color: #555; margin: 0 0 9px; }
   .tt-divider { border: none; border-top: 1px solid #eee; margin: 8px 0; }
   .tt-vars { list-style: none; margin: 0 0 9px; padding: 0; }
@@ -88,83 +88,84 @@
   <img class="sc-img" id="scimg" src="spring-creator.png" alt="Spring Creator" />
   <div class="sc-overlay" id="overlay"></div>
 
-  <!-- ZONA 1: Panel izquierdo - Dimensiones & Material -->
+  <!-- ZONE 1: Left panel — Dimensions & Material -->
   <div class="zone" id="z-inputs" data-zone="inputs"
-       style="top:13%; left:6.5%; width:23.5%; height:44%">
-    <div class="zone-label">Dimensiones &amp; Material</div>
+       style="top:8.88%; left:6.05%; width:12.11%; height:36.54%">
+    <div class="zone-label">Dimensions &amp; Material</div>
   </div>
 
-  <!-- ZONA 2: Vista 3D central -->
+  <!-- ZONE 2: 3D Preview + Operation Points -->
   <div class="zone" id="z-preview" data-zone="preview"
-       style="top:13%; left:30.5%; width:30%; height:44%">
-    <div class="zone-label">Vista 3D &amp; Operación</div>
+       style="top:8.88%; left:18.36%; width:28.52%; height:36.54%">
+    <div class="zone-label">3D View &amp; Operation</div>
   </div>
 
-  <!-- ZONA 3: Panel derecho specs -->
+  <!-- ZONE 3: Right panel — Calculated Specs -->
   <div class="zone" id="z-specs" data-zone="specs"
-       style="top:13%; left:61%; width:23.5%; height:44%">
-    <div class="zone-label">Especificaciones calculadas</div>
+       style="top:8.88%; left:47.07%; width:16.99%; height:36.54%">
+    <div class="zone-label">Calculated Specs</div>
   </div>
 
-  <!-- ZONA 4: Pricing -->
+  <!-- ZONE 4: Pricing & Quantity -->
   <div class="zone" id="z-pricing" data-zone="pricing"
-       style="top:58%; left:6.5%; width:78%; height:15%">
-    <div class="zone-label">Pricing &amp; Cantidad</div>
+       style="top:64.87%; left:6.05%; width:58.01%; height:15.09%">
+    <div class="zone-label">Pricing &amp; Quantity</div>
   </div>
 
   <!-- TOOLTIPS -->
+
   <div class="tooltip-box" id="tt-inputs">
-    <div class="tt-title">⚙️ Dimensiones &amp; Material <span class="tt-badge">inputs</span></div>
-    <p class="tt-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aquí defines la geometría base del resorte antes de calcular.</p>
+    <div class="tt-title">⚙️ Dimensions &amp; Material <span class="tt-badge">inputs</span></div>
+    <p class="tt-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Define the base geometry of your spring before calculating.</p>
     <hr class="tt-divider">
     <ul class="tt-vars">
-      <li><code>WD</code> Wire Diameter — grosor del alambre</li>
-      <li><code>OD</code> Outer Diameter — diámetro exterior</li>
-      <li><code>FL</code> Free Length — longitud sin carga</li>
-      <li><code>TC</code> Total Coils — espiras totales</li>
-      <li><code>ET</code> End Type — tipo de terminación</li>
+      <li><code>WD</code> Wire Diameter — wire thickness</li>
+      <li><code>OD</code> Outer Diameter — outside diameter</li>
+      <li><code>FL</code> Free Length — unloaded length</li>
+      <li><code>TC</code> Total Coils — number of coils</li>
+      <li><code>ET</code> End Type — end configuration</li>
     </ul>
     <hr class="tt-divider">
-    <a class="tt-link" href="#">Ver artículo: configurar dimensiones →</a>
+    <a class="tt-link" href="#">Read article: setting dimensions →</a>
   </div>
 
   <div class="tooltip-box" id="tt-preview">
-    <div class="tt-title">🧊 Vista 3D &amp; Operation Points <span class="tt-badge">interactivo</span></div>
-    <p class="tt-body">Ut enim ad minim veniam. El modelo 3D se actualiza en tiempo real conforme modificas los parámetros.</p>
+    <div class="tt-title">🧊 3D View &amp; Operation Points <span class="tt-badge">interactive</span></div>
+    <p class="tt-body">Ut enim ad minim veniam. The 3D model updates in real time as you modify parameters. Set load, height and deflection in the operation points.</p>
     <hr class="tt-divider">
     <ul class="tt-vars">
-      <li><code>Load</code> Carga aplicada (lbf / N)</li>
-      <li><code>LH</code> Loaded Height — altura bajo carga</li>
-      <li><code>Defl.</code> Deflexión resultante</li>
+      <li><code>Load</code> Applied load (lbf / N)</li>
+      <li><code>LH</code> Loaded Height — height under load</li>
+      <li><code>Defl.</code> Resulting deflection</li>
     </ul>
     <hr class="tt-divider">
-    <a class="tt-link" href="#">Ver artículo: operation points →</a>
+    <a class="tt-link" href="#">Read article: operation points →</a>
   </div>
 
   <div class="tooltip-box" id="tt-specs">
-    <div class="tt-title">📊 Especificaciones calculadas <span class="tt-badge">read-only</span></div>
-    <p class="tt-body">Duis aute irure dolor in reprehenderit. Todos los valores se calculan automáticamente: rigidez, límites seguros y factor Wahl.</p>
+    <div class="tt-title">📊 Calculated Specs <span class="tt-badge">read-only</span></div>
+    <p class="tt-body">Duis aute irure dolor in reprehenderit. All values are calculated automatically: spring rate, safe limits, Wahl factor and material properties.</p>
     <hr class="tt-divider">
     <ul class="tt-vars">
-      <li><code>K</code> Spring Rate — rigidez (lbf/in)</li>
+      <li><code>K</code> Spring Rate — stiffness (lbf/in)</li>
       <li><code>MSL</code> Max Safe Load</li>
       <li><code>MSD</code> Max Safe Deflection</li>
-      <li><code>Wahl</code> Factor de corrección de estrés</li>
+      <li><code>Wahl</code> Stress correction factor</li>
     </ul>
     <hr class="tt-divider">
-    <a class="tt-link" href="#">Ver artículo: interpretar los specs →</a>
+    <a class="tt-link" href="#">Read article: interpreting specs →</a>
   </div>
 
   <div class="tooltip-box" id="tt-pricing">
-    <div class="tt-title">🏷️ Pricing por volumen <span class="tt-badge">precio instantáneo</span></div>
-    <p class="tt-body">Excepteur sint occaecat. Precio calculado al instante para cada nivel de cantidad. A mayor volumen, menor costo unitario.</p>
+    <div class="tt-title">🏷️ Volume Pricing <span class="tt-badge">instant quote</span></div>
+    <p class="tt-body">Excepteur sint occaecat cupidatat. Price is calculated instantly for every quantity tier. The more you order, the lower the unit cost.</p>
     <hr class="tt-divider">
     <ul class="tt-vars">
-      <li><code>25–25K</code> Rangos de cantidad disponibles</li>
-      <li><code>BEST</code> Tier recomendado (resaltado verde)</li>
+      <li><code>25–25K</code> Available quantity ranges</li>
+      <li><code>BEST</code> Recommended tier (highlighted green)</li>
     </ul>
     <hr class="tt-divider">
-    <a class="tt-link" href="#">Ver artículo: cómo cotizar →</a>
+    <a class="tt-link" href="#">Read article: how to get a quote →</a>
   </div>
 
 </div>
@@ -182,8 +183,8 @@
   };
 
   function positionTooltip(zone, tt) {
-    var wRect = wrap.getBoundingClientRect();
-    var zRect = zone.getBoundingClientRect();
+    var wRect  = wrap.getBoundingClientRect();
+    var zRect  = zone.getBoundingClientRect();
     var relTop  = zRect.top  - wRect.top;
     var relLeft = zRect.left - wRect.left;
     var key = zone.dataset.zone;
@@ -192,15 +193,19 @@
     tt.style.width = ttW + 'px';
 
     if (key === 'inputs') {
+      // Right of the left panel
       tt.style.top  = relTop + 'px';
       tt.style.left = (relLeft + zRect.width + 10) + 'px';
     } else if (key === 'specs') {
+      // Left of the right panel
       tt.style.top  = relTop + 'px';
       tt.style.left = (relLeft - ttW - 10) + 'px';
     } else if (key === 'pricing') {
-      tt.style.top  = (relTop - 240) + 'px';
+      // Above the pricing zone
+      tt.style.top  = (relTop - 245) + 'px';
       tt.style.left = relLeft + 'px';
     } else {
+      // Below the zone label
       tt.style.top  = (relTop + 30) + 'px';
       tt.style.left = relLeft + 'px';
     }
