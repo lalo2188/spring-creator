@@ -42,14 +42,14 @@
   }
   .zone:hover, .zone.active {
     border-color: rgba(46,142,255,1);
-    box-shadow: 0 0 0 1px rgba(46,142,255,0.4), 0 0 16px rgba(46,142,255,0.4);
+    box-shadow: 0 0 0 1px rgba(46,142,255,0.35), 0 0 16px rgba(46,142,255,0.4);
   }
   .zone-label {
     position: absolute;
     top: -1px; left: 8px;
     font-size: 10px; font-weight: 700;
     color: #2e8eff;
-    background: rgba(0,8,24,0.78);
+    background: rgba(0,8,24,0.8);
     padding: 2px 8px;
     border-radius: 0 0 6px 6px;
     letter-spacing: .04em;
@@ -85,30 +85,30 @@
 
 <div class="sc-wrap" id="scwrap">
 
-  <img class="sc-img" id="scimg" src="spring-creator.png" alt="Spring Creator" />
+  <img class="sc-img" src="spring-creator.png" alt="Spring Creator" />
   <div class="sc-overlay" id="overlay"></div>
 
   <!-- ZONE 1: Left panel — Dimensions & Material -->
   <div class="zone" id="z-inputs" data-zone="inputs"
-       style="top:8.88%; left:6.05%; width:12.11%; height:36.54%">
+       style="top:17.93%; left:15.59%; width:15.62%; height:30.37%">
     <div class="zone-label">Dimensions &amp; Material</div>
   </div>
 
-  <!-- ZONE 2: 3D Preview + Operation Points -->
+  <!-- ZONE 2: Center — 3D View & Operation Points -->
   <div class="zone" id="z-preview" data-zone="preview"
-       style="top:8.88%; left:18.36%; width:28.52%; height:36.54%">
+       style="top:17.93%; left:31.21%; width:39.22%; height:30.37%">
     <div class="zone-label">3D View &amp; Operation</div>
   </div>
 
   <!-- ZONE 3: Right panel — Calculated Specs -->
   <div class="zone" id="z-specs" data-zone="specs"
-       style="top:8.88%; left:47.07%; width:16.99%; height:36.54%">
+       style="top:17.93%; left:70.43%; width:14.1%; height:30.37%">
     <div class="zone-label">Calculated Specs</div>
   </div>
 
   <!-- ZONE 4: Pricing & Quantity -->
   <div class="zone" id="z-pricing" data-zone="pricing"
-       style="top:64.87%; left:6.05%; width:58.01%; height:15.09%">
+       style="top:65.37%; left:15.59%; width:68.95%; height:11.9%">
     <div class="zone-label">Pricing &amp; Quantity</div>
   </div>
 
@@ -116,7 +116,7 @@
 
   <div class="tooltip-box" id="tt-inputs">
     <div class="tt-title">⚙️ Dimensions &amp; Material <span class="tt-badge">inputs</span></div>
-    <p class="tt-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Define the base geometry of your spring before calculating.</p>
+    <p class="tt-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Define the base geometry of your spring before calculating results.</p>
     <hr class="tt-divider">
     <ul class="tt-vars">
       <li><code>WD</code> Wire Diameter — wire thickness</li>
@@ -131,7 +131,7 @@
 
   <div class="tooltip-box" id="tt-preview">
     <div class="tt-title">🧊 3D View &amp; Operation Points <span class="tt-badge">interactive</span></div>
-    <p class="tt-body">Ut enim ad minim veniam. The 3D model updates in real time as you modify parameters. Set load, height and deflection in the operation points.</p>
+    <p class="tt-body">Ut enim ad minim veniam. The 3D model updates in real time as you modify parameters. Set load, height and deflection in the operation points section.</p>
     <hr class="tt-divider">
     <ul class="tt-vars">
       <li><code>Load</code> Applied load (lbf / N)</li>
@@ -144,7 +144,7 @@
 
   <div class="tooltip-box" id="tt-specs">
     <div class="tt-title">📊 Calculated Specs <span class="tt-badge">read-only</span></div>
-    <p class="tt-body">Duis aute irure dolor in reprehenderit. All values are calculated automatically: spring rate, safe limits, Wahl factor and material properties.</p>
+    <p class="tt-body">Duis aute irure dolor in reprehenderit. All values are automatically calculated: spring rate, safe limits, Wahl factor and material properties.</p>
     <hr class="tt-divider">
     <ul class="tt-vars">
       <li><code>K</code> Spring Rate — stiffness (lbf/in)</li>
@@ -189,7 +189,6 @@
     var relLeft = zRect.left - wRect.left;
     var key = zone.dataset.zone;
     var ttW = 265;
-
     tt.style.width = ttW + 'px';
 
     if (key === 'inputs') {
@@ -205,7 +204,7 @@
       tt.style.top  = (relTop - 245) + 'px';
       tt.style.left = relLeft + 'px';
     } else {
-      // Below the zone label
+      // Preview: top-left of zone
       tt.style.top  = (relTop + 30) + 'px';
       tt.style.left = relLeft + 'px';
     }
